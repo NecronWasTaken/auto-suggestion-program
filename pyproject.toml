@@ -16,6 +16,9 @@ scipy = "^1.11.2"
 scikit-image = "^0.21.0"
 
 
+[tool.poetry.group.dev.dependencies]
+autopep8 = "^2.0.4"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
