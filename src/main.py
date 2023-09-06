@@ -6,7 +6,7 @@ from thefuzz import process
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
 from skimage.feature import hog
-from auto_suggestion import *
+from modules.auto_suggestion import *
 
 
 def generate_combinations(cur: sqlite3.Cursor) -> list[str]:
@@ -76,7 +76,7 @@ def create_dump_of_distances() -> None:
         for j in range(i + 1, len(chars)):
             arr[i][j] = calculate_distance(features[i], features[j])
             arr[j][i] = arr[i][j]
-    np.savetxt('dump_of_distances.txt', arr)
+    np.savetxt('dumps/dump_of_distances.txt', arr)
     return
 
 
@@ -112,9 +112,9 @@ def create_dump_of_closest_chars_and_distances(dump_of_distances: np.ndarray, ta
         chars.append(closest[0])
         distances.append(closest[1])
 
-    np.savetxt('dump_of_closest_chars_' + type_name + '.txt',
+    np.savetxt('dumps/dump_of_closest_chars_' + type_name + '.txt',
                np.array(chars), delimiter=" ", fmt="%s", encoding='utf-8')
-    np.savetxt('dump_of_closest_distances_' +
+    np.savetxt('dumps/dump_of_closest_distances_' +
                type_name+'.txt', np.array(distances))
     return
 
@@ -143,17 +143,17 @@ def create_dump_of_closest_cc(dump_of_distances: np.ndarray) -> None:
         this_chars.append(np.delete(temp1, np.where(temp1 == pair)))
         distances.append(np.delete(temp2, np.where(temp2 == 0)))
 
-    np.savetxt('dump_of_closest_chars_pairs.txt',
+    np.savetxt('dumps/dump_of_closest_chars_pairs.txt',
                np.array(pairs), delimiter=" ", fmt="%s", encoding='utf-8')
-    np.savetxt('dump_of_closest_chars_cc.txt',
+    np.savetxt('dumps/dump_of_closest_chars_cc.txt',
                np.array(this_chars), delimiter=" ", fmt="%s", encoding='utf-8')
-    np.savetxt('dump_of_closest_distances_cc.txt', np.array(distances))
+    np.savetxt('dumps/dump_of_closest_distances_cc.txt', np.array(distances))
     return
 
 def main() -> None:
     # create_dump_of_distances()
     dump_of_distances: np.ndarray = np.loadtxt(
-        'dump_of_distances.txt', dtype="float") 
+        'dumps/dump_of_distances.txt', dtype="float") 
     # print(dump_of_distances)
 
     # create_dump_of_closest_chars_and_distances(
