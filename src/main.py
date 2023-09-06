@@ -166,38 +166,11 @@ def main() -> None:
     #     dump_of_distances, False, alphabet,'7')
     # create_dump_of_closest_cc(dump_of_distances)
 
-    dump_of_closest_chars_1 = np.loadtxt(
-        'dump_of_closest_chars_1-4.txt', dtype=str, encoding='utf-8')
-    dump_of_closest_distances_1 = np.loadtxt(
-        'dump_of_closest_distances_1-4.txt')
-
-    dump_of_closest_chars_4 = np.loadtxt(
-        'dump_of_closest_chars_5.txt', dtype=str, encoding='utf-8')
-    dump_of_closest_distances_4 = np.loadtxt('dump_of_closest_distances_5.txt')
-
-    dump_of_closest_chars_5 = np.loadtxt(
-        'dump_of_closest_chars_6.txt', dtype=str, encoding='utf-8')
-    dump_of_closest_distances_5 = np.loadtxt('dump_of_closest_distances_6.txt')
-
-    dump_of_closest_chars_6 = np.loadtxt(
-        'dump_of_closest_chars_7.txt', dtype=str, encoding='utf-8')
-    dump_of_closest_distances_6 = np.loadtxt('dump_of_closest_distances_7.txt')
-
-    dump_of_closest_chars_cc = np.loadtxt(
-        'dump_of_closest_chars_cc.txt', dtype=str, encoding='utf-8')
-    dump_of_closest_distances_cc = np.loadtxt('dump_of_closest_distances_cc.txt')
-    dump_of_closest_chars_pairs = np.loadtxt(
-        'dump_of_closest_chars_pairs.txt', dtype=str, encoding='utf-8')
-    
     number = 'ПОРС110'
     inc = plate_number_validation(number)
 
     if inc is not None:
-        print(find_closest_numbers(number, inc, dump_of_closest_chars_1, dump_of_closest_distances_1, 
-                                dump_of_closest_chars_4, dump_of_closest_distances_4, 
-                                dump_of_closest_chars_5, dump_of_closest_distances_5, 
-                                dump_of_closest_chars_6, dump_of_closest_distances_6,
-                                dump_of_closest_chars_cc, dump_of_closest_distances_cc, dump_of_closest_chars_pairs))
+        print(find_closest_numbers(number, inc))
     print('...')
 
 if __name__ == '__main__':

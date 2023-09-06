@@ -31,8 +31,30 @@ dict_of_chars = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7,
 set_of_alphabet = set(alphabet)
 set_of_numbers = set(numbers)
 
+dump_of_closest_chars_1 = np.loadtxt(
+    'dump_of_closest_chars_1-4.txt', dtype=str, encoding='utf-8')
+dump_of_closest_distances_1 = np.loadtxt(
+    'dump_of_closest_distances_1-4.txt')
 
-def partial_permutations(elements, length):
+dump_of_closest_chars_4 = np.loadtxt(
+    'dump_of_closest_chars_5.txt', dtype=str, encoding='utf-8')
+dump_of_closest_distances_4 = np.loadtxt('dump_of_closest_distances_5.txt')
+
+dump_of_closest_chars_5 = np.loadtxt(
+    'dump_of_closest_chars_6.txt', dtype=str, encoding='utf-8')
+dump_of_closest_distances_5 = np.loadtxt('dump_of_closest_distances_6.txt')
+
+dump_of_closest_chars_6 = np.loadtxt(
+    'dump_of_closest_chars_7.txt', dtype=str, encoding='utf-8')
+dump_of_closest_distances_6 = np.loadtxt('dump_of_closest_distances_7.txt')
+
+dump_of_closest_chars_cc = np.loadtxt(
+    'dump_of_closest_chars_cc.txt', dtype=str, encoding='utf-8')
+dump_of_closest_distances_cc = np.loadtxt('dump_of_closest_distances_cc.txt')
+dump_of_closest_chars_pairs = np.loadtxt(
+    'dump_of_closest_chars_pairs.txt', dtype=str, encoding='utf-8')
+
+def partial_permutations(elements, length) -> list[list[int]]:
     if length == 0:
         return [[]]
     else:
@@ -75,12 +97,7 @@ def plate_number_validation(plate: str) -> list[int] | None:
     return incorrect
 
 
-def find_closest_numbers(number: str, inc: list[int],
-                         dump_of_closest_chars_1: np.ndarray, dump_of_closest_distances_1: np.ndarray,
-                         dump_of_closest_chars_4: np.ndarray, dump_of_closest_distances_4: np.ndarray,
-                         dump_of_closest_chars_5: np.ndarray, dump_of_closest_distances_5: np.ndarray,
-                         dump_of_closest_chars_6: np.ndarray, dump_of_closest_distances_6: np.ndarray,
-                         dump_of_closest_chars_cc: np.ndarray, dump_of_closest_distances_cc: np.ndarray, dump_of_closest_chars_pairs: np.ndarray) -> str:
+def find_closest_numbers(number: str, inc: list[int]) -> str:
     chars = numbers + alphabet
     print("Find closest numbers to:", number)
 
